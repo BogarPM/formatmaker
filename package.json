@@ -1,0 +1,22 @@
+{
+  "name": "formatmaker",
+  "version": "1.0.0",
+  "description": "A simple library for making document formats in svg formats, modify them programmatically and save them in pdf formats",
+  "main": "index.js",
+  "scripts": {
+    "test": "dev"
+  },
+  "keywords": [
+    "document",
+    "image",
+    "svg",
+    "vector",
+    "image",
+    "automation"
+  ],
+  "author": "BogarPM",
+  "license": "ISC",
+  "dependencies": {
+    "simple-svg-tools": "^1.1.12"
+  }
+}
