@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<svg width="210mm" height="297mm" viewBox="0 0 210 297" version="1.1" id="svg5" inkscape:version="1.1.2 (b8e25be833, 2022-02-05)" sodipodi:docname="test.svg" xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd" xmlns="http://www.w3.org/2000/svg" xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview id="namedview7" pagecolor="#ffffff" bordercolor="#656565" borderopacity="1" inkscape:pageshadow="0" inkscape:pageopacity="0" inkscape:pagecheckerboard="0" inkscape:document-units="mm" showgrid="false" inkscape:zoom="0.54252946" inkscape:cx="373.25162" inkscape:cy="427.62655" inkscape:window-width="1600" inkscape:window-height="837" inkscape:window-x="-8" inkscape:window-y="-8" inkscape:window-maximized="1" inkscape:current-layer="layer1"/>
+  <defs id="defs2"/>
+  <g inkscape:label="Layer 1" inkscape:groupmode="layer" id="layer1">
+    <text xml:space="preserve" style="font-style:normal;font-weight:normal;font-size:10.5833px;line-height:1.25;font-family:sans-serif;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.264583" x="82.418716" y="118.50739" id="text1442">
+      <tspan sodipodi:role="line" id="tspan1440" style="stroke-width:0.264583" x="35" y="60">testing stuff with id: 1</tspan>
+      <tspan sodipodi:role="line" style="stroke-width:0.264583" x="82.418716" y="131.73651" id="tspan1444"/>
+    </text>
+    <text xml:space="preserve" style="font-style:normal;font-weight:normal;font-size:10.5833px;line-height:1.25;font-family:sans-serif;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.264583" x="87.29557" y="172.15269" id="text3541">
+      <tspan sodipodi:role="line" id="tspan3539" style="stroke-width:0.264583" x="60" y="110">testing stuff with id: 2</tspan>
+    </text>
+  </g>
+</svg>
