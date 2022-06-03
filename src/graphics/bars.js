@@ -1,13 +1,17 @@
 const PDFDocument = require('pdfkit');
 const { getRandomColor } = require('./colors');
 
+
 const defaultDivisions = 10;
 const defaultX = 25;
 const defaultY = 25;
-var defaultHeigth = 300;
-var defaultWidth = 300;
 const testcolor = '#000';
 const defaultBarWidth = 25; // Default bar width in pixels
+
+
+var defaultHeigth = 300;
+var defaultWidth = 300;
+var deftitle = 'Gráfica de barras';
 
 /*
     Function to create a bar graphic given data
@@ -41,15 +45,16 @@ const defaultBarWidth = 25; // Default bar width in pixels
             promedy: value      // Sets a line in the promedy 
         },
         config: {
-            grid,   //default false, if specified, turns grid on
-
+            grid,   // Default false, if specified, turns grid on
+            title,  // Text to show at Top of graphic
         }
     }
 */
 
-function createBarGraphic(doc,transform,data){
+function createBarGraphic(doc,transform,data,config = {}){
     const { x,y,minwidth,height,minheigth,scale } = transform;
     const { axisx,axisy,values,promedy } = data;
+    const { grid,title } = config;
     var H = defaultWidth;
     var W = defaultWidth;
     var gx = defaultX;
@@ -58,6 +63,13 @@ function createBarGraphic(doc,transform,data){
     if(y != undefined){gy = y;}
     if(height != undefined){H = height;}
     if(minwidth != undefined) {W = minwidth}
+    // Print title
+    if( title != undefined ) { deftitle = title; }
+    doc.fontSize(18);
+    const titleW = doc.widthOfString(deftitle);
+    const titleH = doc.heightOfString(deftitle);
+    doc.text(deftitle,gx + (W - titleW)/2, gy - titleH)
+    doc.fontSize(12);
     doc.moveTo(gx,gy);
     doc.lineTo(gx,gy + H).stroke();
     doc.moveTo(gx,gy + H);
@@ -73,17 +85,29 @@ function createBarGraphic(doc,transform,data){
     console.log(step);
     const pxstep = H/divisions;
     var maxw = 0;
+    // Draw scale divisions in y axis
+
     for (let i = 1; i < divisions + 1; i++) {
         var wval = doc.widthOfString((step*i).toString())
         if(wval >= maxw){maxw = wval;}
         doc.moveTo(gx,gy + H - i*pxstep);
         doc.fillColor('#222')
-        doc.lineTo(gx - zeroW - 4,gy + H - i*pxstep).stroke();
+        doc.lineTo(gx - zeroW - 10,gy + H - i*pxstep).stroke('#000');
+        if( grid != undefined ){
+            if(grid == true){
+                doc.moveTo(gx, gy + H - i*pxstep)
+                doc.lineTo(gx + W, gy + H - i*pxstep).stroke('#AAA');
+            }
+        }
         doc.text(i*step,gx - wval,gy + H - i*pxstep - zeroH)
     }
     if(promedy != undefined){
+        const promstr = promedy.toString();
+        const promW = doc.widthOfString(promstr);
+        const promH = doc.heightOfString(promstr);
         doc.moveTo(gx,gy + H - promedy/axisy.scale*H);
-        doc.lineTo(gx + W,gy + H - promedy/axisy.scale*H).stroke();
+        doc.lineTo(gx + W,gy + H - promedy/axisy.scale*H).lineWidth(2).stroke('#730000');
+        doc.text(promstr,gx + W - promW, gy + H - promedy/axisy.scale*H - promH,{width:promW})
     }
     // Print axis y unit
     doc.text(unit,gx - maxw - doc.widthOfString(unit),gy + (H - doc.heightOfString(unit))/2)

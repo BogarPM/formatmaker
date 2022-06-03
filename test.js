@@ -6,7 +6,7 @@ function createDefaultDoc() {
     const doc = new PDFDocument({size:'A4'});
     doc.pipe(fs.createWriteStream('./out/test.pdf')); // write to PDF
     //doc.pipe(res);                                       // HTTP response
-    bargraphs.createBarGraphic(doc,{x:50,y:50,minwidth:500},{
+    bargraphs.createBarGraphic(doc,{x:50,y:50,minwidth:400},{
         axisy:{
             scale:100,
             unit:'m',
@@ -19,9 +19,14 @@ function createDefaultDoc() {
             'Producto 4':{value: 71},
             'Producto 5':{value: 15},
         },
-        promedy: 41
+        promedy: 73.52
+    },  //Config
+    {
+        grid:true,
+        title:'Gráfica Promedios denieres'
     })
     
+    //doc.lineTo(0,0).lineWidth()
     
 
     // add stuff to PDF here using methods described below...
